@@ -10,7 +10,7 @@ const TabBarIcon = ({ focused, icon, title }: TabBarIconProps) => (
   <View className="tab-icon">
     <Image
       source={icon}
-      className="w-4 h-4"
+      className="size-4"
       resizeMode="contain"
       tintColor={focused ? "#FE8C00" : "#5D5F6D"}
     />

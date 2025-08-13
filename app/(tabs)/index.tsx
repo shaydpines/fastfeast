@@ -1,10 +1,20 @@
 import "../globals.css";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FlatList, View, Pressable, Image, Text, TouchableOpacity } from "react-native";
+import {
+  FlatList,
+  View,
+  Pressable,
+  Image,
+  Text,
+  TouchableOpacity,
+  Button,
+} from "react-native";
 import { images, offers } from "@/constants";
 import { Fragment } from "react";
 import cn from "clsx";
 import CartButton from "@/components/CartButton";
+import * as Sentry from "@sentry/react-native";
+
 
 export default function Index() {
   return (
@@ -23,6 +33,7 @@ export default function Index() {
         </View>
         <CartButton />
       </View>
+
       <FlatList
         data={offers}
         renderItem={({ item, index }) => {
@@ -70,6 +81,9 @@ export default function Index() {
           );
         }}
         contentContainerClassName="pb-28 px-5"
+        ListFooterComponent={() => (
+            <Button title='Try!' onPress={ () => { Sentry.captureException(new Error('Ping error')) }}/>
+        )}
       />
     </SafeAreaView>
   );

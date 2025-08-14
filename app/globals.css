@@ -73,8 +73,13 @@
         @apply relative flex flex-row items-center justify-center w-full bg-white shadow-md shadow-black/10 rounded-full  font-quicksand-medium text-dark-100 gap-5;
     }
 
-    .tab-icon {
+    .tab-icons {
         @apply flex min-w-20 items-center justify-center min-h-full gap-1 mt-12;
+    }
+
+    .icon {
+        width: 10vw;
+        height: 10vw;
     }
 
     .offer-card {

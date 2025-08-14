@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Dimensions } from "react-native";
 import React from "react";
 import { Redirect, Slot, Tabs } from "expo-router";
 import useAuthStore from "@/store/auth.store";
@@ -6,11 +6,17 @@ import { TabBarIconProps } from "@/type";
 import { images } from "@/constants";
 import cn from "clsx";
 
+const { width } = Dimensions.get("window");
+const iconSize = width * 0.08;
+
 const TabBarIcon = ({ focused, icon, title }: TabBarIconProps) => (
-  <View className="tab-icon">
+  <View className="tab-icons">
     <Image
       source={icon}
-      className="size-4"
+      style={{
+          width: iconSize,
+          height: iconSize,
+      }}
       resizeMode="contain"
       tintColor={focused ? "#FE8C00" : "#5D5F6D"}
     />
@@ -59,6 +65,30 @@ export default function TabLayout() {
           title: "Home",
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} icon={images.home} title="Home" />
+          ),
+        }}
+      /> <Tabs.Screen
+        name="search"
+        options={{
+          title: "Search",
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={images.search} title="Search" />
+          ),
+        }}
+      /> <Tabs.Screen
+        name="cart"
+        options={{
+          title: "Cart",
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={images.bag} title="Cart" />
+          ),
+        }}
+      /> <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profilee",
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={images.person} title="Profile" />
           ),
         }}
       />
